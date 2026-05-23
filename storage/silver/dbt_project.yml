@@ -1,0 +1,13 @@
+name: 'silver_layer'
+version: '1.0.0'
+config-version: 2
+
+vars:
+  warehouse_path: "/tmp/warehouse"
+  bronze_path: "{{ var('warehouse_path') }}/bronze"
+  silver_path: "{{ var('warehouse_path') }}/silver"
+
+models:
+  silver_layer:
+    +materialized: table
+    +schema: silver

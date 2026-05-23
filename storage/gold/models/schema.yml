@@ -1,0 +1,111 @@
+version: 2
+
+models:
+  - name: fct_daily_aggregates
+    description: Fact table - daily aggregates per source
+    columns:
+      - name: date_key
+        description: Date partition key
+        tests:
+          - not_null
+      - name: source_id
+        description: Source identifier
+        tests:
+          - not_null
+      - name: record_count
+        description: Number of records
+        tests:
+          - not_null
+          - type: numeric
+            config:
+              where: "record_count >= 0"
+      - name: error_count
+        description: Number of errors
+        tests:
+          - not_null
+          - type: numeric
+            config:
+              where: "error_count >= 0"
+
+  - name: dim_sources
+    description: Dimension table for sources
+    columns:
+      - name: source_key
+        description: Surrogate key
+        tests:
+          - unique
+          - not_null
+      - name: source_id
+        description: Natural key
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_time
+    description: Time dimension table
+    columns:
+      - name: date_key
+        description: Date key
+        tests:
+          - unique
+          - not_null
+      - name: day_of_week
+        description: Day number 1-7
+      - name: week_of_year
+        description: Week number 1-53
+      - name: month
+        description: Month number 1-12
+      - name: quarter
+        description: Quarter number 1-4
+      - name: is_weekend
+        description: Weekend flag
+
+  - name: dim_customers_scd2
+    description: Slowly changing dimension type 2 for customers
+    columns:
+      - name: customer_key
+        description: Surrogate key
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Natural key
+        tests:
+          - not_null
+      - name: name
+        description: Customer name
+      - name: email
+        description: Customer email
+      - name: address
+        description: Customer address
+      - name: effective_date
+        description: Start date of the record
+      - name: expiry_date
+        description: End date of the record
+      - name: is_current
+        description: Current record flag
+
+  - name: dim_products_scd2
+    description: Slowly changing dimension type 2 for products
+    columns:
+      - name: product_key
+        description: Surrogate key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        description: Natural key
+        tests:
+          - not_null
+      - name: name
+        description: Product name
+      - name: category
+        description: Product category
+      - name: price
+        description: Product price
+      - name: effective_date
+        description: Start date of the record
+      - name: expiry_date
+        description: End date of the record
+      - name: is_current
+        description: Current record flag

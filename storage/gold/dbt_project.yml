@@ -1,0 +1,13 @@
+name: 'gold_layer'
+version: '1.0.0'
+config-version: 2
+
+vars:
+  warehouse_path: "/tmp/warehouse"
+  silver_path: "{{ var('warehouse_path') }}/silver"
+  gold_path: "{{ var('warehouse_path') }}/gold"
+
+models:
+  gold_layer:
+    +materialized: table
+    +schema: gold

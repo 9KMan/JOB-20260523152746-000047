@@ -1,0 +1,17 @@
+silver:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "/tmp/warehouse/silver.duckdb"
+      extensions:
+        - parquet
+
+gold:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "/tmp/warehouse/gold.duckdb"
+      extensions:
+        - parquet

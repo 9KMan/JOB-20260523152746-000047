@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_sources
+    description: Staged source data with deduplication
+    columns:
+      - name: source_id
+        description: Source identifier
+        tests:
+          - unique
+          - not_null
+      - name: ingested_at
+        description: When the record was ingested
+        tests:
+          - not_null
+      - name: record_hash
+        description: Hash of record data for deduplication
+        tests:
+          - unique
+
+  - name: stg_daily_metrics
+    description: Staged daily aggregate metrics
+    columns:
+      - name: date_key
+        description: Date partition key
+        tests:
+          - not_null
+          - unique
+      - name: source_id
+        description: Source identifier
+        tests:
+          - not_null
+
+  - name: dim_sources_clean
+    description: Cleansed dimension table for sources
+    columns:
+      - name: source_key
+        description: Surrogate key for source
+        tests:
+          - unique
+          - not_null
+      - name: source_id
+        description: Natural key
+        tests:
+          - unique
+          - not_null
+      - name: source_name
+        description: Human readable name
+      - name: source_type
+        description: Type of source (api, database, file, stream)
+      - name: created_at
+        description: Creation timestamp
