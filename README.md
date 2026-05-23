@@ -69,22 +69,59 @@ curl http://localhost:8000/health
 
 **Mongkolpoj Phanutaecha** — Principal Data Platform Architect | 15+ years building production data systems
 
-**Recent relevant experience:**
-- **Logistics SaaS ETL** (10M records/day) — Built medallion architecture from scratch for a 50-person data team. Migrated from raw SQL joins to Airflow + dbt + Metabase. Reduced dashboard refresh latency from 45 min to <8 min.
-- **Fintech ML feature store** — Designed Spark + Feast feature store for a lending platform. 200+ batch features, sub-100ms online serving p99 latency.
-- **E-commerce aggregation hub** — Multi-source pipeline (5 sources, 3 warehouses, nightly + micro-batch) with unified schema normalization. Saved 20 hr/week of manual data wrangling.
+---
+
+### Case Study 1: Real-Time Stock & Sales Platform
+**Challenge:** Real-time inventory & sales visibility across 3,000+ POS terminals across hundreds of stores. Legacy systems couldn't support live reconciliation.
+
+**Solution:**
+- Designed Kafka-based event streaming for real-time POS ingestion
+- Built Node.js microservices for high-throughput event processing
+- Deployed Apache Cassandra cluster for transactional storage + Elasticsearch for sub-second inventory search
+- Implemented Talend + Python ETL for daily Stock-On-Hand sync from SAP/Oracle/AS400
+- Delivered Flutter apps for store managers to monitor & resync inventory
+
+**Outcome:** ✅ Near real-time inventory visibility across all locations | ✅ Accurate reconciliation between POS, merchandising, and warehouse systems | ✅ Stable 24/7 performance under heavy transactional loads | ✅ Seamless coexistence of legacy and modern distributed systems
+
+---
+
+### Case Study 2: Multi-Source ETL Pipeline for Legacy Modernization
+**Challenge:** Fragmented data across SAP, Oracle Retail, JDA, AS/400, and DB2 causing delays, inconsistencies, and manual reconciliation.
+
+**Solution:**
+- Architected high-volume ETL/ELT pipelines consolidating multiple legacy sources
+- Automated scheduling with Prefect + distributed compute with Dask
+- Built cross-system validation layers to ensure upstream/downstream data integrity
+- Migrated critical workloads to modern distributed databases without downtime
+
+**Outcome:** ✅ Reduced processing times from hours → minutes | ✅ Improved data consistency across enterprise systems | ✅ Enabled scalable, cloud-ready architecture while preserving legacy investments
+
+---
+
+### Case Study 3: Operational Data API Platform
+**Challenge:** Business teams needed fast, reliable access to consolidated inventory & sales metrics via mobile and web dashboards.
+
+**Solution:**
+- Designed RESTful microservices using Node.js
+- Optimized PostgreSQL queries + materialized views for reporting
+- Added Redis caching to achieve <150ms P95 response times
+- Integrated Kafka event stream for real-time data updates
+
+**Outcome:** ✅ Sub-150ms API response for high-demand endpoints | ✅ Improved operational visibility for store managers | ✅ Enabled scalable, data-driven decision tools for business teams
+
+---
 
 **Frameworks & tools I work with:**
 
 | Category | Tools |
 |----------|-------|
 | Orchestration | Apache Airflow, Prefect, Dagster |
-| ETL/Processing | Python (Polars, Pandas), Apache Spark (PySpark), dbt Core |
-| Storage | MinIO/S3, PostgreSQL, BigQuery, Snowflake, Delta Lake |
+| ETL/Processing | Python (Polars, Pandas), Apache Spark (PySpark), dbt Core, Talend |
+| Storage | MinIO/S3, PostgreSQL, BigQuery, Snowflake, Delta Lake, Cassandra, Elasticsearch |
 | BI/Visualization | Metabase, Grafana, DOMO, Looker, Streamlit |
 | ML | MLflow, BQML, SageMaker batch inference, scikit-learn, PyTorch |
 | Infrastructure | Docker Compose, Kubernetes, Terraform, GitHub Actions |
 
-**Tech stack:** Python · Airflow · dbt · MinIO · PostgreSQL · Docker · Kubernetes · Terraform
+**Tech stack:** Python · Airflow · Kafka · Cassandra · Elasticsearch · PostgreSQL · Redis · Prefect · Dask · Flutter
 
 GitHub: [github.com/9KMan](https://github.com/9KMan) | Open to remote contracts | GMT+7 (Bangkok)
