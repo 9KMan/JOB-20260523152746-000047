@@ -116,7 +116,7 @@ curl http://localhost:8000/health
 | Category | Tools |
 |----------|-------|
 | Orchestration | Apache Airflow, Prefect, Dagster |
-| ETL/Processing | Python (Polars, Pandas), Apache Spark (PySpark), dbt Core, Talend |
+| ETL/Processing | Python (Polars, Pandas), Dask, dbt Core, Talend |
 | Storage | MinIO/S3, PostgreSQL, BigQuery, Snowflake, Delta Lake, Cassandra, Elasticsearch |
 | BI/Visualization | Metabase, Grafana, DOMO, Looker, Streamlit |
 | ML | MLflow, BQML, SageMaker batch inference, scikit-learn, PyTorch |
